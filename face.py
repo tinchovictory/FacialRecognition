@@ -135,7 +135,6 @@ images, persons = imageLoader("att_faces/")
 
 meanImage = np.mean(images, 0)
 images -= meanImage
-
 print("Generating autofaces")
 
 #U, S, V = np.linalg.svd(images, full_matrices=False)
@@ -152,7 +151,7 @@ clf.fit(projected, persons)
 
 print("Loading test image")
 
-testImg = im.imread("att_faces/s12/10.pgm") / MAX_BYTE_VALUE
+testImg = im.imread("att_faces/martin/10.pgm", mode='L') / MAX_BYTE_VALUE
 testImg = np.reshape(testImg, [1, IMG_HEIGHT * IMG_WIDTH])
 
 testImg -= meanImage
