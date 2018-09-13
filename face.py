@@ -24,7 +24,7 @@ def imageLoader(path):
 
     for d in directories:
         for imgNo in range(1, IMAGES_PER_PERSON + 1):
-            img = im.imread(path + d + "/" + str(imgNo) + ".pgm")/MAX_BYTE_VALUE
+            img = im.imread(path + d + "/" + str(imgNo) + ".pgm", mode='L')/MAX_BYTE_VALUE
             images[imgCount, :] = np.reshape(img, [1, IMG_HEIGHT * IMG_WIDTH])
             imgCount += 1
             persons.append(d)
@@ -117,7 +117,7 @@ def getVofSVD(matrixA):
         if eigenvalues[i] < 0.00001:
             break
 
-        u = np.reshape(U[:, i], (-1, 1))
+        u = np.reshape(U[:, i], (-1, 1))  # reshape matrix to avoid shape error
         v = np.matmul(At, u) / np.sqrt(eigenvalues[i])
         
         V[i,:] = np.transpose(v)
