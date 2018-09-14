@@ -179,7 +179,7 @@ clf.fit(projected, persons)
 
 print("Loading test image")
 
-testImg = ( im.imread("att_faces/martin/9.pgm", mode='L') - MAX_BYTE_VALUE/2 ) / (MAX_BYTE_VALUE/2)
+testImg = ( im.imread("att_faces/Flor/9.pgm", mode='L') - MAX_BYTE_VALUE/2 ) / (MAX_BYTE_VALUE/2)
 testImg = np.reshape(testImg, [1, IMG_HEIGHT * IMG_WIDTH])
 
 testK = genereateTestKernel(images, testImg, K)
